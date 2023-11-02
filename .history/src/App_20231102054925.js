@@ -32,12 +32,7 @@ const dateBuilder = (d) => {
     return `${day} ${date} ${month} ${year}`
 }
   return (
-    <div className={
-      (typeof weather.main != "undefined")
-       ? ((weather.main.temp > 60 )
-        ? 'app warm' 
-        : 'app') 
-        : 'app'}>
+    <div className="app">
       <main>
         <div className="search-box">
           <input 
@@ -64,17 +59,7 @@ const dateBuilder = (d) => {
         </div>
         ) : ('')}
       </main>
-      <div class="social__media">
-       
-        <p class="website__rights">burntaftermint.sol All rights reserved</p>
-        <div class="social__icons">
-            <a href="/" class="social__icon--link">
-                
-            </a>
-        </div>
     </div>
-    </div>
-
   );
 }
 

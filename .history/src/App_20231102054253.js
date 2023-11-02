@@ -9,7 +9,7 @@ function App() {
 
   const search = evt => {
     if (evt.key === "Enter") {
-      fetch(`${api.base}weather?q=${query}&units=imperial&APPID=${api.key}`)
+      fetch(`${api.base}weather?q=${query}&units=metric&APPID=${api.key}`)
       .then(res => res.json())
       .then(result => {
         setWeather(result)
@@ -32,12 +32,7 @@ const dateBuilder = (d) => {
     return `${day} ${date} ${month} ${year}`
 }
   return (
-    <div className={
-      (typeof weather.main != "undefined")
-       ? ((weather.main.temp > 60 )
-        ? 'app warm' 
-        : 'app') 
-        : 'app'}>
+    <div className="app">
       <main>
         <div className="search-box">
           <input 
@@ -59,22 +54,12 @@ const dateBuilder = (d) => {
             <div className="temp">
               {Math.round(weather.main.temp)}°F
             </div>
-            <div className="weather">{weather.weather[0].main}</div>
+            <div className="weather">Sunny</div>
           </div>
         </div>
         ) : ('')}
       </main>
-      <div class="social__media">
-       
-        <p class="website__rights">burntaftermint.sol All rights reserved</p>
-        <div class="social__icons">
-            <a href="/" class="social__icon--link">
-                
-            </a>
-        </div>
     </div>
-    </div>
-
   );
 }
 

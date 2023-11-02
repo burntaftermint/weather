@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 const api = {
-  key: "aae71886c63e3353f55a2d87e4ab0d82",
+  key: "7d4ef5d23648c7c62acd3ccfa1a0a30b",
   base: "https://api.openweathermap.org/data/2.5/"
 }
 function App() {
@@ -9,7 +9,7 @@ function App() {
 
   const search = evt => {
     if (evt.key === "Enter") {
-      fetch(`${api.base}weather?q=${query}&units=imperial&APPID=${api.key}`)
+      fetch(`${api.base}weather?q=${query}&units=metric&APPID=${api.key}`)
       .then(res => res.json())
       .then(result => {
         setWeather(result)
@@ -32,12 +32,7 @@ const dateBuilder = (d) => {
     return `${day} ${date} ${month} ${year}`
 }
   return (
-    <div className={
-      (typeof weather.main != "undefined")
-       ? ((weather.main.temp > 60 )
-        ? 'app warm' 
-        : 'app') 
-        : 'app'}>
+    <div className="app">
       <main>
         <div className="search-box">
           <input 
@@ -46,35 +41,23 @@ const dateBuilder = (d) => {
             placeholder="Search..."
             onChange={e => setQuery(e.target.value)}
             value={query}
-            onKeyPress={search}
+            onKeyDown={search}
           />
         </div>
-        {(typeof weather.main != "undefined") ? (
         <div>
           <div className="location-box">
-            <div className="location">{weather.name}, {weather.sys.country}</div>
+            <div className="location">New York City, US</div>
             <div className="date">{dateBuilder(new Date())}</div>
           </div>
           <div className="weather-box">
             <div className="temp">
-              {Math.round(weather.main.temp)}°F
+              15°F
             </div>
-            <div className="weather">{weather.weather[0].main}</div>
+            <div className="weather">Sunny</div>
           </div>
         </div>
-        ) : ('')}
       </main>
-      <div class="social__media">
-       
-        <p class="website__rights">burntaftermint.sol All rights reserved</p>
-        <div class="social__icons">
-            <a href="/" class="social__icon--link">
-                
-            </a>
-        </div>
     </div>
-    </div>
-
   );
 }
 
